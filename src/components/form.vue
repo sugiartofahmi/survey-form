@@ -64,7 +64,7 @@ const submitData = async () => {
           v-model="survey.fullname"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
-          placeholder="Fahmi Sugiarto"
+          placeholder="Masukan Nama Lengkap "
         />
       </div>
       <div class="mb-4">
@@ -144,7 +144,7 @@ const submitData = async () => {
           v-model="survey.class"
           class="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
-          placeholder="A1"
+          placeholder="Masukan Kelas "
         />
       </div>
       <div class="flex items-center justify-between">
