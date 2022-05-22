@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, computed, onUpdated } from "vue";
 import { supabase } from "../supabase";
 import Swal from "sweetalert2";
 
@@ -14,6 +14,20 @@ const clearForm = () => {
   survey.class = "";
   survey.course = "";
 };
+
+const isValid = computed(() => {
+  return (
+    survey.fullname !== "" &&
+    survey.class !== "" &&
+    survey.course !== "" &&
+    survey.class.length > 1 &&
+    survey.fullname.length > 1
+  );
+});
+
+onUpdated(() => {
+  console.log(isValid);
+});
 
 const submitData = async () => {
   try {
@@ -135,7 +149,8 @@ const submitData = async () => {
       </div>
       <div class="flex items-center justify-between">
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          :disabled="!isValid"
+          class="bg-blue-500 disabled:bg-gray-300 disabled:text-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Submit
